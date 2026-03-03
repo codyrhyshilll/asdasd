@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0069)file:///Users/cody/Downloads/Valenero_CRM_Pro___Command_Center_9.html -->
+<!-- saved from url=(0073)file:///Users/cody/Downloads/Valenero_CRM_Pro_Command_Center_Patched.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -923,7 +923,7 @@ td.bold{font-weight:500;color:var(--text)}
   <span id="sync-text">Live sync active</span>
 </div>
 
-<div id="app" style="display: none;">
+<div id="app" style="display: flex;">
   <!-- SIDEBAR -->
   <div class="sidebar" id="sidebar">
     <div class="sidebar-logo">
@@ -947,7 +947,7 @@ td.bold{font-weight:500;color:var(--text)}
       </div>
       <div class="biz-dropdown" id="biz-dropdown" style="position:absolute"></div>
     </div>
-    <div class="sidebar-nav" id="nav-list"><div class="nav-section">Valenero HQ</div><div class="nav-item active" onclick="navigate(&#39;overview&#39;)" id="nav-overview">
+    <div class="sidebar-nav" id="nav-list"><div class="nav-section">Valenero HQ</div><div class="nav-item" onclick="navigate(&#39;overview&#39;)" id="nav-overview">
       <span class="nav-icon">⚡</span><span>Overview</span>
     </div><div class="nav-item" onclick="navigate(&#39;businesses&#39;)" id="nav-businesses">
       <span class="nav-icon">🏢</span><span>All Clients</span>
@@ -955,7 +955,7 @@ td.bold{font-weight:500;color:var(--text)}
       <span class="nav-icon">📊</span><span>Global Reports</span>
     </div><div class="nav-item" onclick="navigate(&#39;leaderboard&#39;)" id="nav-leaderboard">
       <span class="nav-icon">🏅</span><span>Team Leaderboard</span>
-    </div><div class="nav-section">Sales &amp; Pipeline</div><div class="nav-item" onclick="navigate(&#39;leads&#39;)" id="nav-leads">
+    </div><div class="nav-section">Sales &amp; Pipeline</div><div class="nav-item active" onclick="navigate(&#39;leads&#39;)" id="nav-leads">
       <span class="nav-icon">🎯</span><span>Leads</span><span class="nav-badge blue">1960</span>
     </div><div class="nav-item" onclick="navigate(&#39;pipeline&#39;)" id="nav-pipeline">
       <span class="nav-icon">📋</span><span>Pipeline</span>
@@ -1023,122 +1023,562 @@ td.bold{font-weight:500;color:var(--text)}
   <!-- MAIN -->
   <div class="main">
     <div class="topbar">
-      <div class="topbar-title" id="topbar-title">Overview</div>
+      <div class="topbar-title" id="topbar-title">Leads</div>
       <div class="topbar-spacer"></div>
       <div class="search-bar" style="min-width:180px">
         <span style="color:var(--text3);font-size:13px">🔍</span>
         <input placeholder="Search leads, contacts…" id="global-search" onkeyup="globalSearch(this.value)">
       </div>
       <button class="btn btn-secondary btn-sm" onclick="openCallOverlay()" data-tip="Launch Call Overlay">📞 Call</button>
-      <button id="session-btn" class="btn btn-secondary btn-sm" onclick="toggleSession()" style="background: rgba(239, 68, 68, 0.12); border-color: rgba(239, 68, 68, 0.3); color: var(--red);">⏹ End Session</button>
+      <button id="session-btn" class="btn btn-secondary btn-sm" onclick="toggleSession()" style="">▶ Session</button>
       <button class="btn btn-primary btn-sm" onclick="quickAddLead()">+ Lead</button>
     </div>
     <div class="page-content" id="page-content">
     <div class="section-header mb-4">
       <div>
-        <div class="section-title">🏢 Valenero</div>
-        <div class="section-sub">Overview · Pro Plus · £0/mo MRR</div>
+        <div class="section-title">Leads — Valenero</div>
+        <div class="section-sub">25 of 2000 leads shown · 2000 total</div>
       </div>
-      <div style="display:flex;gap:8px">
-        <button class="btn btn-secondary btn-sm" onclick="renderReporting()">📈 View Reports</button>
-        <button class="btn btn-primary btn-sm" onclick="quickAddLead()">+ Add Lead</button>
-      </div>
-    </div>
-    <div class="grid-4 mb-4">
-      <div class="card">
-    <div class="card-header"><div class="card-title">New Leads</div><div class="card-icon icon-blue">🎯</div></div>
-    <div class="card-value">1960</div>
-    <div class="card-delta ">1960 awaiting contact</div>
-  </div>
-      <div class="card">
-    <div class="card-header"><div class="card-title">Demos Booked</div><div class="card-icon icon-purple">📅</div></div>
-    <div class="card-value">0</div>
-    <div class="card-delta ">2000 total leads</div>
-  </div>
-      <div class="card">
-    <div class="card-header"><div class="card-title">Deals Won</div><div class="card-icon icon-green">🏆</div></div>
-    <div class="card-value">0</div>
-    <div class="card-delta ">Keep going</div>
-  </div>
-      <div class="card">
-    <div class="card-header"><div class="card-title">MRR</div><div class="card-icon icon-green">💰</div></div>
-    <div class="card-value">£0</div>
-    <div class="card-delta ">Monthly recurring</div>
-  </div>
-    </div>
-    <div class="grid-4 mb-4">
-      <div class="card">
-    <div class="card-header"><div class="card-title">Today's Calls</div><div class="card-icon icon-blue">📞</div></div>
-    <div class="card-value">0</div>
-    <div class="card-delta ">2000 total leads</div>
-  </div>
-      <div class="card">
-    <div class="card-header"><div class="card-title">Pending Callbacks</div><div class="card-icon icon-amber">🔄</div></div>
-    <div class="card-value">0</div>
-    <div class="card-delta ">All done</div>
-  </div>
-      <div class="card">
-    <div class="card-header"><div class="card-title">Open Tasks</div><div class="card-icon icon-amber">✅</div></div>
-    <div class="card-value">0</div>
-    <div class="card-delta ">Clear!</div>
-  </div>
-      <div class="card">
-    <div class="card-header"><div class="card-title">Confirmed Bookings</div><div class="card-icon icon-green">📅</div></div>
-    <div class="card-value">0</div>
-    <div class="card-delta ">AI captured</div>
-  </div>
-    </div>
-    <div class="grid-2 mb-4">
-      <div class="card">
-        <div class="card-header"><div class="card-title">Pipeline Snapshot</div><button class="btn btn-ghost btn-xs" onclick="navigate(&#39;pipeline&#39;)">View all →</button></div>
-        <div style="margin-bottom:10px">
-            <div style="display:flex;justify-content:space-between;margin-bottom:4px">
-              <span style="font-size:12px;color:var(--text2)">Callback</span>
-              <span style="font-size:12px;font-weight:600;color:var(--text)">19</span>
-            </div>
-            <div class="progress"><div class="progress-fill" style="width:1%;background:var(--amber)"></div></div>
-          </div><div style="margin-bottom:10px">
-            <div style="display:flex;justify-content:space-between;margin-bottom:4px">
-              <span style="font-size:12px;color:var(--text2)">Contacted</span>
-              <span style="font-size:12px;font-weight:600;color:var(--text)">14</span>
-            </div>
-            <div class="progress"><div class="progress-fill" style="width:1%;background:var(--amber)"></div></div>
-          </div><div style="margin-bottom:10px">
-            <div style="display:flex;justify-content:space-between;margin-bottom:4px">
-              <span style="font-size:12px;color:var(--text2)">Not Interested</span>
-              <span style="font-size:12px;font-weight:600;color:var(--text)">4</span>
-            </div>
-            <div class="progress"><div class="progress-fill" style="width:0%;background:var(--red)"></div></div>
-          </div><div style="margin-bottom:10px">
-            <div style="display:flex;justify-content:space-between;margin-bottom:4px">
-              <span style="font-size:12px;color:var(--text2)">Sent Info</span>
-              <span style="font-size:12px;font-weight:600;color:var(--text)">3</span>
-            </div>
-            <div class="progress"><div class="progress-fill" style="width:0%;background:var(--amber)"></div></div>
-          </div><div style="margin-bottom:10px">
-            <div style="display:flex;justify-content:space-between;margin-bottom:4px">
-              <span style="font-size:12px;color:var(--text2)">New</span>
-              <span style="font-size:12px;font-weight:600;color:var(--text)">1960</span>
-            </div>
-            <div class="progress"><div class="progress-fill" style="width:98%;background:var(--accent)"></div></div>
-          </div>
-      </div>
-      <div class="card">
-        <div class="card-header"><div class="card-title">Recent Activity</div><button class="btn btn-ghost btn-xs" onclick="navigate(&#39;leads&#39;)">View leads →</button></div>
-        <div class="activity-item">
-          <div class="activity-dot" style="background:var(--amber)"></div>
-          <div><div class="activity-text">New lead added: codyu hill — </div><div class="activity-time">2 Mar 13:34 · Cody</div></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <div class="search-bar" style="min-width:160px">
+          <span style="color:var(--text3)">🔍</span>
+          <input placeholder="Search…" value="" oninput="leadsFilter.search=this.value;renderLeads()">
         </div>
+        <select class="form-select" style="width:130px;padding:6px 10px;font-size:12px" onchange="leadsFilter.stage=this.value;renderLeads()">
+          <option value="">All Stages</option>
+          <option>New</option><option>Contacted</option><option>No Answer</option><option>Voicemail</option><option>Callback</option><option>Sent Info</option><option>PM Spoke To</option><option>Demo Booked</option><option>Demo Complete</option><option>Proposal Sent</option><option>Won</option><option>Not Interested</option><option>DNC</option>
+        </select>
+        <select class="form-select" style="width:120px;padding:6px 10px;font-size:12px" onchange="leadsFilter.owner=this.value;renderLeads()">
+          <option value="">All Owners</option>
+          <option value="e1a08899-bbdb-4643-8659-a29ac2708de5">Cody</option>
+        </select>
+        <button class="btn btn-secondary btn-sm" onclick="exportLeads()">⬇ Export</button>
+        <button class="btn btn-secondary btn-sm" onclick="importLeadsCSV()">⬆ Import</button>
+        <button class="btn btn-primary btn-sm" onclick="showAddForm(&#39;lead&#39;)">+ Add Lead</button>
+        <select class="form-select" style="width:110px;padding:6px 10px;font-size:12px" onchange="leadsPagination.perPage=Number(this.value);leadsPagination.page=1;renderLeads()">
+          <option value="25" selected="">25 / page</option><option value="50">50 / page</option><option value="75">75 / page</option><option value="100">100 / page</option>
+        </select>
       </div>
     </div>
-    <div class="grid-2">
-      <div class="card">
-        <div class="card-header"><div class="card-title">Pending Callbacks</div><button class="btn btn-ghost btn-xs" onclick="navigate(&#39;callbacks&#39;)">View all →</button></div>
-        <div class="empty-state" style="padding:16px"><h3>No callbacks pending</h3></div>
+    <div style="display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap;"><button class="btn btn-primary btn-xs">🌐 All Leads</button><button class="btn btn-secondary btn-xs">👤 My Leads</button><button class="btn btn-secondary btn-xs">❓ Unassigned</button></div><div class="card">
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Lead</th><th>Company</th><th>Phone</th>
+            <th>Stage</th><th>Score</th><th>Calls</th><th>Last Called</th>
+            <th>Receptionist</th><th>Owner</th><th>Source</th><th></th>
+          </tr></thead>
+          <tbody>
+            <tr>
+              <td class="bold" style="cursor:pointer" onclick="openLeadPanel(&#39;id_9lpc6fnmm86efvt&#39;)"> </td>
+              <td>ann street dental practice</td>
+              <td class="font-mono" style="cursor:pointer" onclick="dialNumber(&#39;442866000000&#39;,&#39; &#39;)" data-tip="Click to call">442866000000</td>
+              <td><span class="tag tag-amber">Callback</span></td>
+              <td><div class="score-ring score-mid">40</div></td>
+              <td style="font-weight:600;color:var(--text3)">0</td>
+              <td class="text-muted">2 Mar</td>
+              <td><span class="text-muted">—</span></td>
+              <td class="text-muted">Cody</td>
+              <td><span class="tag tag-gray">Import</span></td>
+              <td>
+                <div style="display:flex;gap:4px">
+                  <button class="btn btn-ghost btn-xs" onclick="openLeadPanel(&#39;id_9lpc6fnmm86efvt&#39;)" data-tip="View">👁</button>
+                  <button class="btn btn-primary btn-xs" onclick="openCallOverlayForLead(&#39;id_9lpc6fnmm86efvt&#39;)" data-tip="Call">📞</button>
+                  <button class="btn btn-success btn-xs" onclick="launchWhatsApp(&#39;442866000000&#39;,&#39;&#39;,&#39;ann street dental practice&#39;)" data-tip="WhatsApp">💬</button>
+                  <button class="btn btn-ghost btn-xs" onclick="openROIProposal(&#39;id_9lpc6fnmm86efvt&#39;)" data-tip="ROI Proposal">📈</button>
+                  <button class="btn btn-ghost btn-xs" onclick="deleteLead(&#39;id_9lpc6fnmm86efvt&#39;)" data-tip="Delete">🗑</button>
+                </div>
+              </td>
+            </tr><tr>
+              <td class="bold" style="cursor:pointer" onclick="openLeadPanel(&#39;id_ecs0h0gmm86efvt&#39;)"> </td>
+              <td>dumbledore dental care ltd</td>
+              <td class="font-mono" style="cursor:pointer" onclick="dialNumber(&#39;441444000000&#39;,&#39; &#39;)" data-tip="Click to call">441444000000</td>
+              <td><span class="tag tag-cyan">Contacted</span></td>
+              <td><div class="score-ring score-mid">40</div></td>
+              <td style="font-weight:600;color:var(--text3)">0</td>
+              <td class="text-muted">—</td>
+              <td><span class="text-muted">—</span></td>
+              <td class="text-muted">Cody</td>
+              <td><span class="tag tag-gray">Import</span></td>
+              <td>
+                <div style="display:flex;gap:4px">
+                  <button class="btn btn-ghost btn-xs" onclick="openLeadPanel(&#39;id_ecs0h0gmm86efvt&#39;)" data-tip="View">👁</button>
+                  <button class="btn btn-primary btn-xs" onclick="openCallOverlayForLead(&#39;id_ecs0h0gmm86efvt&#39;)" data-tip="Call">📞</button>
+                  <button class="btn btn-success btn-xs" onclick="launchWhatsApp(&#39;441444000000&#39;,&#39;&#39;,&#39;dumbledore dental care ltd&#39;)" data-tip="WhatsApp">💬</button>
+                  <button class="btn btn-ghost btn-xs" onclick="openROIProposal(&#39;id_ecs0h0gmm86efvt&#39;)" data-tip="ROI Proposal">📈</button>
+                  <button class="btn btn-ghost btn-xs" onclick="deleteLead(&#39;id_ecs0h0gmm86efvt&#39;)" data-tip="Delete">🗑</button>
+                </div>
+              </td>
+            </tr><tr>
+              <td class="bold" style="cursor:pointer" onclick="openLeadPanel(&#39;id_g8cp1yamm86efvt&#39;)"> </td>
+              <td>david mccaughey dental practice</td>
+              <td class="font-mono" style="cursor:pointer" onclick="dialNumber(&#39;442891000000&#39;,&#39; &#39;)" data-tip="Click to call">442891000000</td>
+              <td><span class="tag tag-cyan">Contacted</span></td>
+              <td><div class="score-ring score-mid">40</div></td>
+              <td style="font-weight:600;color:var(--text3)">0</td>
+              <td class="text-muted">—</td>
+              <td><span class="text-muted">—</span></td>
+              <td class="text-muted">Cody</td>
+              <td><span class="tag tag-gray">Import</span></td>
+              <td>
+                <div style="display:flex;gap:4px">
+                  <button class="btn btn-ghost btn-xs" onclick="openLeadPanel(&#39;id_g8cp1yamm86efvt&#39;)" data-tip="View">👁</button>
+                  <button class="btn btn-primary btn-xs" onclick="openCallOverlayForLead(&#39;id_g8cp1yamm86efvt&#39;)" data-tip="Call">📞</button>
+                  <button class="btn btn-success btn-xs" onclick="launchWhatsApp(&#39;442891000000&#39;,&#39;&#39;,&#39;david mccaughey dental practice&#39;)" data-tip="WhatsApp">💬</button>
+                  <button class="btn btn-ghost btn-xs" onclick="openROIProposal(&#39;id_g8cp1yamm86efvt&#39;)" data-tip="ROI Proposal">📈</button>
+                  <button class="btn btn-ghost btn-xs" onclick="deleteLead(&#39;id_g8cp1yamm86efvt&#39;)" data-tip="Delete">🗑</button>
+                </div>
+              </td>
+            </tr><tr>
+              <td class="bold" style="cursor:pointer" onclick="openLeadPanel(&#39;id_adh4az5mm86efvt&#39;)"> </td>
+              <td>sneinton family dental centre</td>
+              <td class="font-mono" style="cursor:pointer" onclick="dialNumber(&#39;441159000000&#39;,&#39; &#39;)" data-tip="Click to call">441159000000</td>
+              <td><span class="tag tag-cyan">Contacted</span></td>
+              <td><div class="score-ring score-mid">40</div></td>
+              <td style="font-weight:600;color:var(--text3)">0</td>
+              <td class="text-muted">—</td>
+              <td><span class="text-muted">—</span></td>
+              <td class="text-muted">Cody</td>
+              <td><span class="tag tag-gray">Import</span></td>
+              <td>
+                <div style="display:flex;gap:4px">
+                  <button class="btn btn-ghost btn-xs" onclick="openLeadPanel(&#39;id_adh4az5mm86efvt&#39;)" data-tip="View">👁</button>
+                  <button class="btn btn-primary btn-xs" onclick="openCallOverlayForLead(&#39;id_adh4az5mm86efvt&#39;)" data-tip="Call">📞</button>
+                  <button class="btn btn-success btn-xs" onclick="launchWhatsApp(&#39;441159000000&#39;,&#39;&#39;,&#39;sneinton family dental centre&#39;)" data-tip="WhatsApp">💬</button>
+                  <button class="btn btn-ghost btn-xs" onclick="openROIProposal(&#39;id_adh4az5mm86efvt&#39;)" data-tip="ROI Proposal">📈</button>
+                  <button class="btn btn-ghost btn-xs" onclick="deleteLead(&#39;id_adh4az5mm86efvt&#39;)" data-tip="Delete">🗑</button>
+                </div>
+              </td>
+            </tr><tr>
+              <td class="bold" style="cursor:pointer" onclick="openLeadPanel(&#39;id_72mnmcrmm86efvt&#39;)"> </td>
+              <td>somercotes family dental centre</td>
+              <td class="font-mono" style="cursor:pointer" onclick="dialNumber(&#39;441774000000&#39;,&#39; &#39;)" data-tip="Click to call">441774000000</td>
+              <td><span class="tag tag-cyan">Contacted</span></td>
+              <td><div class="score-ring score-mid">40</div></td>
+              <td style="font-weight:600;color:var(--text3)">0</td>
+              <td class="text-muted">—</td>
+              <td><span class="text-muted">—</span></td>
+              <td class="text-muted">Cody</td>
+              <td><span class="tag tag-gray">Import</span></td>
+              <td>
+                <div style="display:flex;gap:4px">
+                  <button class="btn btn-ghost btn-xs" onclick="openLeadPanel(&#39;id_72mnmcrmm86efvt&#39;)" data-tip="View">👁</button>
+                  <button class="btn btn-primary btn-xs" onclick="openCallOverlayForLead(&#39;id_72mnmcrmm86efvt&#39;)" data-tip="Call">📞</button>
+                  <button class="btn btn-success btn-xs" onclick="launchWhatsApp(&#39;441774000000&#39;,&#39;&#39;,&#39;somercotes family dental centre&#39;)" data-tip="WhatsApp">💬</button>
+                  <button class="btn btn-ghost btn-xs" onclick="openROIProposal(&#39;id_72mnmcrmm86efvt&#39;)" data-tip="ROI Proposal">📈</button>
+                  <button class="btn btn-ghost btn-xs" onclick="deleteLead(&#39;id_72mnmcrmm86efvt&#39;)" data-tip="Delete">🗑</button>
+                </div>
+              </td>
+            </tr><tr>
+              <td class="bold" style="cursor:pointer" onclick="openLeadPanel(&#39;id_oem2cg9mm86efvt&#39;)"> </td>
+              <td>stoke road dental practice</td>
+              <td class="font-mono" style="cursor:pointer" onclick="dialNumber(&#39;442393000000&#39;,&#39; &#39;)" data-tip="Click to call">442393000000</td>
+              <td><span class="tag tag-amber">Callback</span></td>
+              <td><div class="score-ring score-mid">40</div></td>
+              <td style="font-weight:600;color:var(--text3)">0</td>
+              <td class="text-muted">—</td>
+              <td><span class="text-muted">—</span></td>
+              <td class="text-muted">Cody</td>
+              <td><span class="tag tag-gray">Import</span></td>
+              <td>
+                <div style="display:flex;gap:4px">
+                  <button class="btn btn-ghost btn-xs" onclick="openLeadPanel(&#39;id_oem2cg9mm86efvt&#39;)" data-tip="View">👁</button>
+                  <button class="btn btn-primary btn-xs" onclick="openCallOverlayForLead(&#39;id_oem2cg9mm86efvt&#39;)" data-tip="Call">📞</button>
+                  <button class="btn btn-success btn-xs" onclick="launchWhatsApp(&#39;442393000000&#39;,&#39;&#39;,&#39;stoke road dental practice&#39;)" data-tip="WhatsApp">💬</button>
+                  <button class="btn btn-ghost btn-xs" onclick="openROIProposal(&#39;id_oem2cg9mm86efvt&#39;)" data-tip="ROI Proposal">📈</button>
+                  <button class="btn btn-ghost btn-xs" onclick="deleteLead(&#39;id_oem2cg9mm86efvt&#39;)" data-tip="Delete">🗑</button>
+                </div>
+              </td>
+            </tr><tr>
+              <td class="bold" style="cursor:pointer" onclick="openLeadPanel(&#39;id_fwnqrnimm86efvt&#39;)"> </td>
+              <td>dr d allen - gordon road dental care</td>
+              <td class="font-mono" style="cursor:pointer" onclick="dialNumber(&#39;441160000000&#39;,&#39; &#39;)" data-tip="Click to call">441160000000</td>
+              <td><span class="tag tag-gray">Not Interested</span></td>
+              <td><div class="score-ring score-mid">40</div></td>
+              <td style="font-weight:600;color:var(--text3)">0</td>
+              <td class="text-muted">—</td>
+              <td><span class="text-muted">—</span></td>
+              <td class="text-muted">Cody</td>
+              <td><span class="tag tag-gray">Import</span></td>
+              <td>
+                <div style="display:flex;gap:4px">
+                  <button class="btn btn-ghost btn-xs" onclick="openLeadPanel(&#39;id_fwnqrnimm86efvt&#39;)" data-tip="View">👁</button>
+                  <button class="btn btn-primary btn-xs" onclick="openCallOverlayForLead(&#39;id_fwnqrnimm86efvt&#39;)" data-tip="Call">📞</button>
+                  <button class="btn btn-success btn-xs" onclick="launchWhatsApp(&#39;441160000000&#39;,&#39;&#39;,&#39;dr d allen - gordon road dental care&#39;)" data-tip="WhatsApp">💬</button>
+                  <button class="btn btn-ghost btn-xs" onclick="openROIProposal(&#39;id_fwnqrnimm86efvt&#39;)" data-tip="ROI Proposal">📈</button>
+                  <button class="btn btn-ghost btn-xs" onclick="deleteLead(&#39;id_fwnqrnimm86efvt&#39;)" data-tip="Delete">🗑</button>
+                </div>
+              </td>
+            </tr><tr>
+              <td class="bold" style="cursor:pointer" onclick="openLeadPanel(&#39;id_slj6x01mm86efvt&#39;)"> </td>
+              <td>lodge causeway dental centre</td>
+              <td class="font-mono" style="cursor:pointer" onclick="dialNumber(&#39;441180000000&#39;,&#39; &#39;)" data-tip="Click to call">441180000000</td>
+              <td><span class="tag tag-amber">Callback</span></td>
+              <td><div class="score-ring score-mid">40</div></td>
+              <td style="font-weight:600;color:var(--text3)">0</td>
+              <td class="text-muted">—</td>
+              <td><span class="text-muted">—</span></td>
+              <td class="text-muted">Cody</td>
+              <td><span class="tag tag-gray">Import</span></td>
+              <td>
+                <div style="display:flex;gap:4px">
+                  <button class="btn btn-ghost btn-xs" onclick="openLeadPanel(&#39;id_slj6x01mm86efvt&#39;)" data-tip="View">👁</button>
+                  <button class="btn btn-primary btn-xs" onclick="openCallOverlayForLead(&#39;id_slj6x01mm86efvt&#39;)" data-tip="Call">📞</button>
+                  <button class="btn btn-success btn-xs" onclick="launchWhatsApp(&#39;441180000000&#39;,&#39;&#39;,&#39;lodge causeway dental centre&#39;)" data-tip="WhatsApp">💬</button>
+                  <button class="btn btn-ghost btn-xs" onclick="openROIProposal(&#39;id_slj6x01mm86efvt&#39;)" data-tip="ROI Proposal">📈</button>
+                  <button class="btn btn-ghost btn-xs" onclick="deleteLead(&#39;id_slj6x01mm86efvt&#39;)" data-tip="Delete">🗑</button>
+                </div>
+              </td>
+            </tr><tr>
+              <td class="bold" style="cursor:pointer" onclick="openLeadPanel(&#39;id_qehfz3fmm86efvt&#39;)"> </td>
+              <td>marlborough dental care</td>
+              <td class="font-mono" style="cursor:pointer" onclick="dialNumber(&#39;441672000000&#39;,&#39; &#39;)" data-tip="Click to call">441672000000</td>
+              <td><span class="tag tag-cyan">Contacted</span></td>
+              <td><div class="score-ring score-mid">40</div></td>
+              <td style="font-weight:600;color:var(--text3)">0</td>
+              <td class="text-muted">—</td>
+              <td><span class="text-muted">—</span></td>
+              <td class="text-muted">Cody</td>
+              <td><span class="tag tag-gray">Import</span></td>
+              <td>
+                <div style="display:flex;gap:4px">
+                  <button class="btn btn-ghost btn-xs" onclick="openLeadPanel(&#39;id_qehfz3fmm86efvt&#39;)" data-tip="View">👁</button>
+                  <button class="btn btn-primary btn-xs" onclick="openCallOverlayForLead(&#39;id_qehfz3fmm86efvt&#39;)" data-tip="Call">📞</button>
+                  <button class="btn btn-success btn-xs" onclick="launchWhatsApp(&#39;441672000000&#39;,&#39;&#39;,&#39;marlborough dental care&#39;)" data-tip="WhatsApp">💬</button>
+                  <button class="btn btn-ghost btn-xs" onclick="openROIProposal(&#39;id_qehfz3fmm86efvt&#39;)" data-tip="ROI Proposal">📈</button>
+                  <button class="btn btn-ghost btn-xs" onclick="deleteLead(&#39;id_qehfz3fmm86efvt&#39;)" data-tip="Delete">🗑</button>
+                </div>
+              </td>
+            </tr><tr>
+              <td class="bold" style="cursor:pointer" onclick="openLeadPanel(&#39;id_yj3p2nzmm86efvt&#39;)"> </td>
+              <td>mount oriel dental care</td>
+              <td class="font-mono" style="cursor:pointer" onclick="dialNumber(&#39;442890000000&#39;,&#39; &#39;)" data-tip="Click to call">442890000000</td>
+              <td><span class="tag tag-gray">Not Interested</span></td>
+              <td><div class="score-ring score-mid">40</div></td>
+              <td style="font-weight:600;color:var(--text3)">0</td>
+              <td class="text-muted">—</td>
+              <td><span class="text-muted">—</span></td>
+              <td class="text-muted">Cody</td>
+              <td><span class="tag tag-gray">Import</span></td>
+              <td>
+                <div style="display:flex;gap:4px">
+                  <button class="btn btn-ghost btn-xs" onclick="openLeadPanel(&#39;id_yj3p2nzmm86efvt&#39;)" data-tip="View">👁</button>
+                  <button class="btn btn-primary btn-xs" onclick="openCallOverlayForLead(&#39;id_yj3p2nzmm86efvt&#39;)" data-tip="Call">📞</button>
+                  <button class="btn btn-success btn-xs" onclick="launchWhatsApp(&#39;442890000000&#39;,&#39;&#39;,&#39;mount oriel dental care&#39;)" data-tip="WhatsApp">💬</button>
+                  <button class="btn btn-ghost btn-xs" onclick="openROIProposal(&#39;id_yj3p2nzmm86efvt&#39;)" data-tip="ROI Proposal">📈</button>
+                  <button class="btn btn-ghost btn-xs" onclick="deleteLead(&#39;id_yj3p2nzmm86efvt&#39;)" data-tip="Delete">🗑</button>
+                </div>
+              </td>
+            </tr><tr>
+              <td class="bold" style="cursor:pointer" onclick="openLeadPanel(&#39;id_9ai45tlmm86efvt&#39;)"> </td>
+              <td>dk1 dental studio</td>
+              <td class="font-mono" style="cursor:pointer" onclick="dialNumber(&#39;441745000000&#39;,&#39; &#39;)" data-tip="Click to call">441745000000</td>
+              <td><span class="tag tag-amber">Callback</span></td>
+              <td><div class="score-ring score-mid">40</div></td>
+              <td style="font-weight:600;color:var(--text3)">0</td>
+              <td class="text-muted">—</td>
+              <td><span class="text-muted">—</span></td>
+              <td class="text-muted">Cody</td>
+              <td><span class="tag tag-gray">Import</span></td>
+              <td>
+                <div style="display:flex;gap:4px">
+                  <button class="btn btn-ghost btn-xs" onclick="openLeadPanel(&#39;id_9ai45tlmm86efvt&#39;)" data-tip="View">👁</button>
+                  <button class="btn btn-primary btn-xs" onclick="openCallOverlayForLead(&#39;id_9ai45tlmm86efvt&#39;)" data-tip="Call">📞</button>
+                  <button class="btn btn-success btn-xs" onclick="launchWhatsApp(&#39;441745000000&#39;,&#39;&#39;,&#39;dk1 dental studio&#39;)" data-tip="WhatsApp">💬</button>
+                  <button class="btn btn-ghost btn-xs" onclick="openROIProposal(&#39;id_9ai45tlmm86efvt&#39;)" data-tip="ROI Proposal">📈</button>
+                  <button class="btn btn-ghost btn-xs" onclick="deleteLead(&#39;id_9ai45tlmm86efvt&#39;)" data-tip="Delete">🗑</button>
+                </div>
+              </td>
+            </tr><tr>
+              <td class="bold" style="cursor:pointer" onclick="openLeadPanel(&#39;id_di0ieglmm86efvt&#39;)"> </td>
+              <td>specialist dental partners</td>
+              <td class="font-mono" style="cursor:pointer" onclick="dialNumber(&#39;441763000000&#39;,&#39; &#39;)" data-tip="Click to call">441763000000</td>
+              <td><span class="tag tag-amber">Callback</span></td>
+              <td><div class="score-ring score-mid">40</div></td>
+              <td style="font-weight:600;color:var(--text3)">0</td>
+              <td class="text-muted">—</td>
+              <td><span class="text-muted">—</span></td>
+              <td class="text-muted">Cody</td>
+              <td><span class="tag tag-gray">Import</span></td>
+              <td>
+                <div style="display:flex;gap:4px">
+                  <button class="btn btn-ghost btn-xs" onclick="openLeadPanel(&#39;id_di0ieglmm86efvt&#39;)" data-tip="View">👁</button>
+                  <button class="btn btn-primary btn-xs" onclick="openCallOverlayForLead(&#39;id_di0ieglmm86efvt&#39;)" data-tip="Call">📞</button>
+                  <button class="btn btn-success btn-xs" onclick="launchWhatsApp(&#39;441763000000&#39;,&#39;&#39;,&#39;specialist dental partners&#39;)" data-tip="WhatsApp">💬</button>
+                  <button class="btn btn-ghost btn-xs" onclick="openROIProposal(&#39;id_di0ieglmm86efvt&#39;)" data-tip="ROI Proposal">📈</button>
+                  <button class="btn btn-ghost btn-xs" onclick="deleteLead(&#39;id_di0ieglmm86efvt&#39;)" data-tip="Delete">🗑</button>
+                </div>
+              </td>
+            </tr><tr>
+              <td class="bold" style="cursor:pointer" onclick="openLeadPanel(&#39;id_80jw0iemm86efvt&#39;)"> </td>
+              <td>mr c williams - the corner dental surgery ltd</td>
+              <td class="font-mono" style="cursor:pointer" onclick="dialNumber(&#39;441744000000&#39;,&#39; &#39;)" data-tip="Click to call">441744000000</td>
+              <td><span class="tag tag-gray">Not Interested</span></td>
+              <td><div class="score-ring score-mid">40</div></td>
+              <td style="font-weight:600;color:var(--text3)">0</td>
+              <td class="text-muted">—</td>
+              <td><span class="text-muted">—</span></td>
+              <td class="text-muted">Cody</td>
+              <td><span class="tag tag-gray">Import</span></td>
+              <td>
+                <div style="display:flex;gap:4px">
+                  <button class="btn btn-ghost btn-xs" onclick="openLeadPanel(&#39;id_80jw0iemm86efvt&#39;)" data-tip="View">👁</button>
+                  <button class="btn btn-primary btn-xs" onclick="openCallOverlayForLead(&#39;id_80jw0iemm86efvt&#39;)" data-tip="Call">📞</button>
+                  <button class="btn btn-success btn-xs" onclick="launchWhatsApp(&#39;441744000000&#39;,&#39;&#39;,&#39;mr c williams - the corner dental surgery ltd&#39;)" data-tip="WhatsApp">💬</button>
+                  <button class="btn btn-ghost btn-xs" onclick="openROIProposal(&#39;id_80jw0iemm86efvt&#39;)" data-tip="ROI Proposal">📈</button>
+                  <button class="btn btn-ghost btn-xs" onclick="deleteLead(&#39;id_80jw0iemm86efvt&#39;)" data-tip="Delete">🗑</button>
+                </div>
+              </td>
+            </tr><tr>
+              <td class="bold" style="cursor:pointer" onclick="openLeadPanel(&#39;id_ucq7gy8mm86efvt&#39;)"> </td>
+              <td>morgan dental</td>
+              <td class="font-mono" style="cursor:pointer" onclick="dialNumber(&#39;441539000000&#39;,&#39; &#39;)" data-tip="Click to call">441539000000</td>
+              <td><span class="tag tag-amber">Callback</span></td>
+              <td><div class="score-ring score-mid">40</div></td>
+              <td style="font-weight:600;color:var(--text3)">0</td>
+              <td class="text-muted">—</td>
+              <td><span class="text-muted">—</span></td>
+              <td class="text-muted">Cody</td>
+              <td><span class="tag tag-gray">Import</span></td>
+              <td>
+                <div style="display:flex;gap:4px">
+                  <button class="btn btn-ghost btn-xs" onclick="openLeadPanel(&#39;id_ucq7gy8mm86efvt&#39;)" data-tip="View">👁</button>
+                  <button class="btn btn-primary btn-xs" onclick="openCallOverlayForLead(&#39;id_ucq7gy8mm86efvt&#39;)" data-tip="Call">📞</button>
+                  <button class="btn btn-success btn-xs" onclick="launchWhatsApp(&#39;441539000000&#39;,&#39;&#39;,&#39;morgan dental&#39;)" data-tip="WhatsApp">💬</button>
+                  <button class="btn btn-ghost btn-xs" onclick="openROIProposal(&#39;id_ucq7gy8mm86efvt&#39;)" data-tip="ROI Proposal">📈</button>
+                  <button class="btn btn-ghost btn-xs" onclick="deleteLead(&#39;id_ucq7gy8mm86efvt&#39;)" data-tip="Delete">🗑</button>
+                </div>
+              </td>
+            </tr><tr>
+              <td class="bold" style="cursor:pointer" onclick="openLeadPanel(&#39;id_yekntuumm86efvt&#39;)"> </td>
+              <td>mr b grainger - radbrook dental practice</td>
+              <td class="font-mono" style="cursor:pointer" onclick="dialNumber(&#39;441743000000&#39;,&#39; &#39;)" data-tip="Click to call">441743000000</td>
+              <td><span class="tag tag-cyan">Contacted</span></td>
+              <td><div class="score-ring score-mid">40</div></td>
+              <td style="font-weight:600;color:var(--text3)">0</td>
+              <td class="text-muted">—</td>
+              <td><span class="text-muted">—</span></td>
+              <td class="text-muted">Cody</td>
+              <td><span class="tag tag-gray">Import</span></td>
+              <td>
+                <div style="display:flex;gap:4px">
+                  <button class="btn btn-ghost btn-xs" onclick="openLeadPanel(&#39;id_yekntuumm86efvt&#39;)" data-tip="View">👁</button>
+                  <button class="btn btn-primary btn-xs" onclick="openCallOverlayForLead(&#39;id_yekntuumm86efvt&#39;)" data-tip="Call">📞</button>
+                  <button class="btn btn-success btn-xs" onclick="launchWhatsApp(&#39;441743000000&#39;,&#39;&#39;,&#39;mr b grainger - radbrook dental practice&#39;)" data-tip="WhatsApp">💬</button>
+                  <button class="btn btn-ghost btn-xs" onclick="openROIProposal(&#39;id_yekntuumm86efvt&#39;)" data-tip="ROI Proposal">📈</button>
+                  <button class="btn btn-ghost btn-xs" onclick="deleteLead(&#39;id_yekntuumm86efvt&#39;)" data-tip="Delete">🗑</button>
+                </div>
+              </td>
+            </tr><tr>
+              <td class="bold" style="cursor:pointer" onclick="openLeadPanel(&#39;id_n02ox5omm86efvt&#39;)"> </td>
+              <td>complete dental windsor</td>
+              <td class="font-mono" style="cursor:pointer" onclick="dialNumber(&#39;441754000000&#39;,&#39; &#39;)" data-tip="Click to call">441754000000</td>
+              <td><span class="tag tag-amber">Callback</span></td>
+              <td><div class="score-ring score-mid">40</div></td>
+              <td style="font-weight:600;color:var(--text3)">0</td>
+              <td class="text-muted">—</td>
+              <td><span class="text-muted">—</span></td>
+              <td class="text-muted">Cody</td>
+              <td><span class="tag tag-gray">Import</span></td>
+              <td>
+                <div style="display:flex;gap:4px">
+                  <button class="btn btn-ghost btn-xs" onclick="openLeadPanel(&#39;id_n02ox5omm86efvt&#39;)" data-tip="View">👁</button>
+                  <button class="btn btn-primary btn-xs" onclick="openCallOverlayForLead(&#39;id_n02ox5omm86efvt&#39;)" data-tip="Call">📞</button>
+                  <button class="btn btn-success btn-xs" onclick="launchWhatsApp(&#39;441754000000&#39;,&#39;&#39;,&#39;complete dental windsor&#39;)" data-tip="WhatsApp">💬</button>
+                  <button class="btn btn-ghost btn-xs" onclick="openROIProposal(&#39;id_n02ox5omm86efvt&#39;)" data-tip="ROI Proposal">📈</button>
+                  <button class="btn btn-ghost btn-xs" onclick="deleteLead(&#39;id_n02ox5omm86efvt&#39;)" data-tip="Delete">🗑</button>
+                </div>
+              </td>
+            </tr><tr>
+              <td class="bold" style="cursor:pointer" onclick="openLeadPanel(&#39;id_83je6tvmm86efvt&#39;)"> </td>
+              <td>mr yuen-man tso - pride hill dental surgery</td>
+              <td class="font-mono" style="cursor:pointer" onclick="dialNumber(&#39;441743000000&#39;,&#39; &#39;)" data-tip="Click to call">441743000000</td>
+              <td><span class="tag tag-amber">Callback</span></td>
+              <td><div class="score-ring score-mid">40</div></td>
+              <td style="font-weight:600;color:var(--text3)">0</td>
+              <td class="text-muted">—</td>
+              <td><span class="text-muted">—</span></td>
+              <td class="text-muted">Cody</td>
+              <td><span class="tag tag-gray">Import</span></td>
+              <td>
+                <div style="display:flex;gap:4px">
+                  <button class="btn btn-ghost btn-xs" onclick="openLeadPanel(&#39;id_83je6tvmm86efvt&#39;)" data-tip="View">👁</button>
+                  <button class="btn btn-primary btn-xs" onclick="openCallOverlayForLead(&#39;id_83je6tvmm86efvt&#39;)" data-tip="Call">📞</button>
+                  <button class="btn btn-success btn-xs" onclick="launchWhatsApp(&#39;441743000000&#39;,&#39;&#39;,&#39;mr yuen-man tso - pride hill dental surgery&#39;)" data-tip="WhatsApp">💬</button>
+                  <button class="btn btn-ghost btn-xs" onclick="openROIProposal(&#39;id_83je6tvmm86efvt&#39;)" data-tip="ROI Proposal">📈</button>
+                  <button class="btn btn-ghost btn-xs" onclick="deleteLead(&#39;id_83je6tvmm86efvt&#39;)" data-tip="Delete">🗑</button>
+                </div>
+              </td>
+            </tr><tr>
+              <td class="bold" style="cursor:pointer" onclick="openLeadPanel(&#39;id_wjv8shfmm86efvt&#39;)"> </td>
+              <td>hordale dental practice</td>
+              <td class="font-mono" style="cursor:pointer" onclick="dialNumber(&#39;441540000000&#39;,&#39; &#39;)" data-tip="Click to call">441540000000</td>
+              <td><span class="tag tag-amber">Callback</span></td>
+              <td><div class="score-ring score-mid">40</div></td>
+              <td style="font-weight:600;color:var(--text3)">0</td>
+              <td class="text-muted">—</td>
+              <td><span class="text-muted">—</span></td>
+              <td class="text-muted">Cody</td>
+              <td><span class="tag tag-gray">Import</span></td>
+              <td>
+                <div style="display:flex;gap:4px">
+                  <button class="btn btn-ghost btn-xs" onclick="openLeadPanel(&#39;id_wjv8shfmm86efvt&#39;)" data-tip="View">👁</button>
+                  <button class="btn btn-primary btn-xs" onclick="openCallOverlayForLead(&#39;id_wjv8shfmm86efvt&#39;)" data-tip="Call">📞</button>
+                  <button class="btn btn-success btn-xs" onclick="launchWhatsApp(&#39;441540000000&#39;,&#39;&#39;,&#39;hordale dental practice&#39;)" data-tip="WhatsApp">💬</button>
+                  <button class="btn btn-ghost btn-xs" onclick="openROIProposal(&#39;id_wjv8shfmm86efvt&#39;)" data-tip="ROI Proposal">📈</button>
+                  <button class="btn btn-ghost btn-xs" onclick="deleteLead(&#39;id_wjv8shfmm86efvt&#39;)" data-tip="Delete">🗑</button>
+                </div>
+              </td>
+            </tr><tr>
+              <td class="bold" style="cursor:pointer" onclick="openLeadPanel(&#39;id_q3a5dtimm86efvt&#39;)"> </td>
+              <td>royston dental care ltd</td>
+              <td class="font-mono" style="cursor:pointer" onclick="dialNumber(&#39;441763000000&#39;,&#39; &#39;)" data-tip="Click to call">441763000000</td>
+              <td><span class="tag tag-cyan">Contacted</span></td>
+              <td><div class="score-ring score-mid">40</div></td>
+              <td style="font-weight:600;color:var(--text3)">0</td>
+              <td class="text-muted">—</td>
+              <td><span class="text-muted">—</span></td>
+              <td class="text-muted">Cody</td>
+              <td><span class="tag tag-gray">Import</span></td>
+              <td>
+                <div style="display:flex;gap:4px">
+                  <button class="btn btn-ghost btn-xs" onclick="openLeadPanel(&#39;id_q3a5dtimm86efvt&#39;)" data-tip="View">👁</button>
+                  <button class="btn btn-primary btn-xs" onclick="openCallOverlayForLead(&#39;id_q3a5dtimm86efvt&#39;)" data-tip="Call">📞</button>
+                  <button class="btn btn-success btn-xs" onclick="launchWhatsApp(&#39;441763000000&#39;,&#39;&#39;,&#39;royston dental care ltd&#39;)" data-tip="WhatsApp">💬</button>
+                  <button class="btn btn-ghost btn-xs" onclick="openROIProposal(&#39;id_q3a5dtimm86efvt&#39;)" data-tip="ROI Proposal">📈</button>
+                  <button class="btn btn-ghost btn-xs" onclick="deleteLead(&#39;id_q3a5dtimm86efvt&#39;)" data-tip="Delete">🗑</button>
+                </div>
+              </td>
+            </tr><tr>
+              <td class="bold" style="cursor:pointer" onclick="openLeadPanel(&#39;id_d0resldmm86efvt&#39;)"> </td>
+              <td>northgate dental health</td>
+              <td class="font-mono" style="cursor:pointer" onclick="dialNumber(&#39;441244000000&#39;,&#39; &#39;)" data-tip="Click to call">441244000000</td>
+              <td><span class="tag tag-cyan">Contacted</span></td>
+              <td><div class="score-ring score-mid">40</div></td>
+              <td style="font-weight:600;color:var(--text3)">0</td>
+              <td class="text-muted">—</td>
+              <td><span class="text-muted">—</span></td>
+              <td class="text-muted">Cody</td>
+              <td><span class="tag tag-gray">Import</span></td>
+              <td>
+                <div style="display:flex;gap:4px">
+                  <button class="btn btn-ghost btn-xs" onclick="openLeadPanel(&#39;id_d0resldmm86efvt&#39;)" data-tip="View">👁</button>
+                  <button class="btn btn-primary btn-xs" onclick="openCallOverlayForLead(&#39;id_d0resldmm86efvt&#39;)" data-tip="Call">📞</button>
+                  <button class="btn btn-success btn-xs" onclick="launchWhatsApp(&#39;441244000000&#39;,&#39;&#39;,&#39;northgate dental health&#39;)" data-tip="WhatsApp">💬</button>
+                  <button class="btn btn-ghost btn-xs" onclick="openROIProposal(&#39;id_d0resldmm86efvt&#39;)" data-tip="ROI Proposal">📈</button>
+                  <button class="btn btn-ghost btn-xs" onclick="deleteLead(&#39;id_d0resldmm86efvt&#39;)" data-tip="Delete">🗑</button>
+                </div>
+              </td>
+            </tr><tr>
+              <td class="bold" style="cursor:pointer" onclick="openLeadPanel(&#39;id_ojld0rxmm86efvt&#39;)"> </td>
+              <td>three towns dental care ltd</td>
+              <td class="font-mono" style="cursor:pointer" onclick="dialNumber(&#39;441295000000&#39;,&#39; &#39;)" data-tip="Click to call">441295000000</td>
+              <td><span class="tag tag-gray">Not Interested</span></td>
+              <td><div class="score-ring score-mid">40</div></td>
+              <td style="font-weight:600;color:var(--text3)">0</td>
+              <td class="text-muted">—</td>
+              <td><span class="text-muted">—</span></td>
+              <td class="text-muted">Cody</td>
+              <td><span class="tag tag-gray">Import</span></td>
+              <td>
+                <div style="display:flex;gap:4px">
+                  <button class="btn btn-ghost btn-xs" onclick="openLeadPanel(&#39;id_ojld0rxmm86efvt&#39;)" data-tip="View">👁</button>
+                  <button class="btn btn-primary btn-xs" onclick="openCallOverlayForLead(&#39;id_ojld0rxmm86efvt&#39;)" data-tip="Call">📞</button>
+                  <button class="btn btn-success btn-xs" onclick="launchWhatsApp(&#39;441295000000&#39;,&#39;&#39;,&#39;three towns dental care ltd&#39;)" data-tip="WhatsApp">💬</button>
+                  <button class="btn btn-ghost btn-xs" onclick="openROIProposal(&#39;id_ojld0rxmm86efvt&#39;)" data-tip="ROI Proposal">📈</button>
+                  <button class="btn btn-ghost btn-xs" onclick="deleteLead(&#39;id_ojld0rxmm86efvt&#39;)" data-tip="Delete">🗑</button>
+                </div>
+              </td>
+            </tr><tr>
+              <td class="bold" style="cursor:pointer" onclick="openLeadPanel(&#39;id_yaq6m1tmm86efvt&#39;)"> </td>
+              <td>richmond hill orthodontics ltd</td>
+              <td class="font-mono" style="cursor:pointer" onclick="dialNumber(&#39;442089000000&#39;,&#39; &#39;)" data-tip="Click to call">442089000000</td>
+              <td><span class="tag tag-amber">Callback</span></td>
+              <td><div class="score-ring score-mid">40</div></td>
+              <td style="font-weight:600;color:var(--text3)">0</td>
+              <td class="text-muted">—</td>
+              <td><span class="text-muted">—</span></td>
+              <td class="text-muted">Cody</td>
+              <td><span class="tag tag-gray">Import</span></td>
+              <td>
+                <div style="display:flex;gap:4px">
+                  <button class="btn btn-ghost btn-xs" onclick="openLeadPanel(&#39;id_yaq6m1tmm86efvt&#39;)" data-tip="View">👁</button>
+                  <button class="btn btn-primary btn-xs" onclick="openCallOverlayForLead(&#39;id_yaq6m1tmm86efvt&#39;)" data-tip="Call">📞</button>
+                  <button class="btn btn-success btn-xs" onclick="launchWhatsApp(&#39;442089000000&#39;,&#39;&#39;,&#39;richmond hill orthodontics ltd&#39;)" data-tip="WhatsApp">💬</button>
+                  <button class="btn btn-ghost btn-xs" onclick="openROIProposal(&#39;id_yaq6m1tmm86efvt&#39;)" data-tip="ROI Proposal">📈</button>
+                  <button class="btn btn-ghost btn-xs" onclick="deleteLead(&#39;id_yaq6m1tmm86efvt&#39;)" data-tip="Delete">🗑</button>
+                </div>
+              </td>
+            </tr><tr>
+              <td class="bold" style="cursor:pointer" onclick="openLeadPanel(&#39;id_4pbmixkmm86efvt&#39;)"> </td>
+              <td>signature smiles dental practice</td>
+              <td class="font-mono" style="cursor:pointer" onclick="dialNumber(&#39;441692000000&#39;,&#39; &#39;)" data-tip="Click to call">441692000000</td>
+              <td><span class="tag tag-amber">Callback</span></td>
+              <td><div class="score-ring score-mid">40</div></td>
+              <td style="font-weight:600;color:var(--text3)">0</td>
+              <td class="text-muted">—</td>
+              <td><span class="text-muted">—</span></td>
+              <td class="text-muted">Cody</td>
+              <td><span class="tag tag-gray">Import</span></td>
+              <td>
+                <div style="display:flex;gap:4px">
+                  <button class="btn btn-ghost btn-xs" onclick="openLeadPanel(&#39;id_4pbmixkmm86efvt&#39;)" data-tip="View">👁</button>
+                  <button class="btn btn-primary btn-xs" onclick="openCallOverlayForLead(&#39;id_4pbmixkmm86efvt&#39;)" data-tip="Call">📞</button>
+                  <button class="btn btn-success btn-xs" onclick="launchWhatsApp(&#39;441692000000&#39;,&#39;&#39;,&#39;signature smiles dental practice&#39;)" data-tip="WhatsApp">💬</button>
+                  <button class="btn btn-ghost btn-xs" onclick="openROIProposal(&#39;id_4pbmixkmm86efvt&#39;)" data-tip="ROI Proposal">📈</button>
+                  <button class="btn btn-ghost btn-xs" onclick="deleteLead(&#39;id_4pbmixkmm86efvt&#39;)" data-tip="Delete">🗑</button>
+                </div>
+              </td>
+            </tr><tr>
+              <td class="bold" style="cursor:pointer" onclick="openLeadPanel(&#39;id_4m57nyemm86efvt&#39;)"> </td>
+              <td>manor house dental &amp; implant clinic</td>
+              <td class="font-mono" style="cursor:pointer" onclick="dialNumber(&#39;441727000000&#39;,&#39; &#39;)" data-tip="Click to call">441727000000</td>
+              <td><span class="tag tag-amber">Callback</span></td>
+              <td><div class="score-ring score-mid">40</div></td>
+              <td style="font-weight:600;color:var(--text3)">0</td>
+              <td class="text-muted">—</td>
+              <td><span class="text-muted">—</span></td>
+              <td class="text-muted">Cody</td>
+              <td><span class="tag tag-gray">Import</span></td>
+              <td>
+                <div style="display:flex;gap:4px">
+                  <button class="btn btn-ghost btn-xs" onclick="openLeadPanel(&#39;id_4m57nyemm86efvt&#39;)" data-tip="View">👁</button>
+                  <button class="btn btn-primary btn-xs" onclick="openCallOverlayForLead(&#39;id_4m57nyemm86efvt&#39;)" data-tip="Call">📞</button>
+                  <button class="btn btn-success btn-xs" onclick="launchWhatsApp(&#39;441727000000&#39;,&#39;&#39;,&#39;manor house dental &amp; implant clinic&#39;)" data-tip="WhatsApp">💬</button>
+                  <button class="btn btn-ghost btn-xs" onclick="openROIProposal(&#39;id_4m57nyemm86efvt&#39;)" data-tip="ROI Proposal">📈</button>
+                  <button class="btn btn-ghost btn-xs" onclick="deleteLead(&#39;id_4m57nyemm86efvt&#39;)" data-tip="Delete">🗑</button>
+                </div>
+              </td>
+            </tr><tr>
+              <td class="bold" style="cursor:pointer" onclick="openLeadPanel(&#39;id_hosiikjmm86efvt&#39;)"> </td>
+              <td>pembroke dental practice &amp; implant centre</td>
+              <td class="font-mono" style="cursor:pointer" onclick="dialNumber(&#39;441294000000&#39;,&#39; &#39;)" data-tip="Click to call">441294000000</td>
+              <td><span class="tag tag-blue">Sent Info</span></td>
+              <td><div class="score-ring score-mid">40</div></td>
+              <td style="font-weight:600;color:var(--text3)">0</td>
+              <td class="text-muted">—</td>
+              <td><span class="text-muted">—</span></td>
+              <td class="text-muted">Cody</td>
+              <td><span class="tag tag-gray">Import</span></td>
+              <td>
+                <div style="display:flex;gap:4px">
+                  <button class="btn btn-ghost btn-xs" onclick="openLeadPanel(&#39;id_hosiikjmm86efvt&#39;)" data-tip="View">👁</button>
+                  <button class="btn btn-primary btn-xs" onclick="openCallOverlayForLead(&#39;id_hosiikjmm86efvt&#39;)" data-tip="Call">📞</button>
+                  <button class="btn btn-success btn-xs" onclick="launchWhatsApp(&#39;441294000000&#39;,&#39;&#39;,&#39;pembroke dental practice &amp; implant centre&#39;)" data-tip="WhatsApp">💬</button>
+                  <button class="btn btn-ghost btn-xs" onclick="openROIProposal(&#39;id_hosiikjmm86efvt&#39;)" data-tip="ROI Proposal">📈</button>
+                  <button class="btn btn-ghost btn-xs" onclick="deleteLead(&#39;id_hosiikjmm86efvt&#39;)" data-tip="Delete">🗑</button>
+                </div>
+              </td>
+            </tr>
+            </tbody>
+        </table>
       </div>
-      <div class="card">
-        <div class="card-header"><div class="card-title">Open Tasks</div><button class="btn btn-ghost btn-xs" onclick="navigate(&#39;tasks&#39;)">View all →</button></div>
-        <div class="empty-state" style="padding:16px"><h3>All tasks done! 🎉</h3></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;font-size:12px;border-top:1px solid var(--border)">
+        <div>Page 1 of 80</div>
+        <div style="display:flex;gap:6px">
+          <button class="btn btn-secondary btn-xs" onclick="if(leadsPagination.page&gt;1){leadsPagination.page--;renderLeads();}" disabled="">← Prev</button>
+          <button class="btn btn-secondary btn-xs" onclick="if(leadsPagination.page&lt;80){leadsPagination.page++;renderLeads();}">Next →</button>
+        </div>
       </div>
     </div></div>
   </div>
@@ -2179,7 +2619,6 @@ async function pushCallToDB(callData) {
     followup_time: callData.followupTime || null,
     receptionist_name: callData.receptionistName || '',
     decision_maker_spoken_to: callData.decisionMakerSpokenTo || false,
-    email_captured: callData.email || '',
     transcript: callData.transcript || '',
     duration_seconds: callData.duration || 0,
     confidence: callData.confidence || null,
@@ -4963,29 +5402,13 @@ function updateLeadScore(leadId, score) {
 // ════════════════════════════════════════════════════════════
 //  PIPELINE (KANBAN)
 // ════════════════════════════════════════════════════════════
-let _pipelineEditMode = false;
-let _pipelineDragSrcIdx = null;
-
 function renderPipeline() {
   const leads = getBizLeads();
   document.getElementById('page-content').innerHTML = `
     <div class="section-header mb-4">
       <div><div class="section-title">Pipeline — ${esc(curBiz().name)}</div>
       <div class="section-sub">${leads.length} total leads</div></div>
-      <div style="display:flex;gap:8px;align-items:center;">
-        <button class="btn btn-ghost btn-sm" onclick="togglePipelineEditMode()" id="pipe-edit-btn" title="Edit pipeline stages">✏️ Edit Stages</button>
-        <button class="btn btn-primary btn-sm" onclick="showAddForm('lead')">+ Add Lead</button>
-      </div>
-    </div>
-    <div id="pipeline-editor-panel" style="display:none;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:14px;">
-      <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;">
-        <span>Pipeline Stages <span style="font-size:11px;color:var(--text3);font-weight:400">— drag to reorder</span></span>
-        <div style="display:flex;gap:8px;">
-          <button class="btn btn-secondary btn-xs" onclick="addPipelineStageInline()">+ Add Stage</button>
-          <button class="btn btn-primary btn-xs" onclick="savePipelineStages()">✓ Done</button>
-        </div>
-      </div>
-      <div id="pipeline-stage-editor" style="display:flex;flex-wrap:wrap;gap:7px;"></div>
+      <button class="btn btn-primary btn-sm" onclick="showAddForm('lead')">+ Add Lead</button>
     </div>
     <div class="pipeline-board" id="pipeline-board">
       ${state.pipelines.outbound.map(stage=>{
@@ -5012,123 +5435,6 @@ function renderPipeline() {
         </div>`;
       }).join('')}
     </div>`;
-  if (_pipelineEditMode) _renderPipelineStageEditor();
-}
-
-function togglePipelineEditMode() {
-  _pipelineEditMode = !_pipelineEditMode;
-  const panel = document.getElementById('pipeline-editor-panel');
-  const btn = document.getElementById('pipe-edit-btn');
-  if (!panel || !btn) return;
-  if (_pipelineEditMode) {
-    panel.style.display = 'block';
-    btn.textContent = '✕ Close Editor';
-    btn.style.color = 'var(--accent)';
-    _renderPipelineStageEditor();
-  } else {
-    panel.style.display = 'none';
-    btn.textContent = '✏️ Edit Stages';
-    btn.style.color = '';
-  }
-}
-
-function _renderPipelineStageEditor() {
-  const container = document.getElementById('pipeline-stage-editor');
-  if (!container) return;
-  const stages = state.pipelines.outbound;
-  container.innerHTML = stages.map((s, i) => `
-    <div class="pipeline-stage-chip" id="pse-${i}"
-      draggable="true"
-      ondragstart="_pseDragStart(event,${i})"
-      ondragover="event.preventDefault();this.style.background='rgba(230,57,70,.12)'"
-      ondragleave="this.style.background=''"
-      ondrop="_pseDrop(event,${i});this.style.background=''"
-      style="display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);padding:5px 9px;cursor:grab;user-select:none;">
-      <span style="cursor:grab;color:var(--text3);font-size:13px">⠿</span>
-      <input type="text" value="${esc(s)}" style="background:transparent;border:none;outline:none;color:var(--text);font-size:12px;font-weight:600;width:${Math.max(80, s.length * 8)}px"
-        onchange="_pipelineRenameStage(${i}, this.value)"
-        onblur="_pipelineRenameStage(${i}, this.value)">
-      ${stages.length > 1 ? `<button onclick="_pipelineDeleteStage(${i})" style="background:none;border:none;color:var(--text3);cursor:pointer;font-size:13px;padding:0 2px;line-height:1" title="Remove stage">×</button>` : ''}
-    </div>`).join('');
-}
-
-function _pseDragStart(event, idx) {
-  _pipelineDragSrcIdx = idx;
-  event.dataTransfer.effectAllowed = 'move';
-}
-
-function _pseDrop(event, targetIdx) {
-  if (_pipelineDragSrcIdx === null || _pipelineDragSrcIdx === targetIdx) return;
-  const stages = state.pipelines.outbound;
-  const moved = stages.splice(_pipelineDragSrcIdx, 1)[0];
-  stages.splice(targetIdx, 0, moved);
-  _pipelineDragSrcIdx = null;
-  saveState();
-  renderPipeline();
-  // Re-open editor
-  _pipelineEditMode = true;
-  togglePipelineEditMode();
-  _pipelineEditMode = true;
-  document.getElementById('pipeline-editor-panel').style.display = 'block';
-  document.getElementById('pipe-edit-btn').textContent = '✕ Close Editor';
-  document.getElementById('pipe-edit-btn').style.color = 'var(--accent)';
-}
-
-function _pipelineRenameStage(idx, newName) {
-  newName = (newName || '').trim();
-  if (!newName) return;
-  const oldName = state.pipelines.outbound[idx];
-  if (oldName === newName) return;
-  // Update all leads that reference the old stage name
-  const leads = state.leads[state.currentBiz] || [];
-  leads.forEach(l => { if (l.stage === oldName) l.stage = newName; });
-  state.pipelines.outbound[idx] = newName;
-  saveState();
-}
-
-function _pipelineDeleteStage(idx) {
-  const stages = state.pipelines.outbound;
-  if (stages.length <= 1) { notify('Need at least one pipeline stage.'); return; }
-  const toDelete = stages[idx];
-  const leads = state.leads[state.currentBiz] || [];
-  const affected = leads.filter(l => l.stage === toDelete);
-  // Move affected leads to the nearest remaining stage
-  const fallback = stages[idx > 0 ? idx - 1 : 1] || stages.find((s,i) => i !== idx);
-  if (affected.length > 0) {
-    if (!confirm(`"${toDelete}" has ${affected.length} lead${affected.length !== 1 ? 's' : ''}. They will be moved to "${fallback}". Continue?`)) return;
-    affected.forEach(l => { l.stage = fallback; });
-  }
-  stages.splice(idx, 1);
-  saveState();
-  renderPipeline();
-  _pipelineEditMode = true;
-  document.getElementById('pipeline-editor-panel').style.display = 'block';
-  document.getElementById('pipe-edit-btn').textContent = '✕ Close Editor';
-  document.getElementById('pipe-edit-btn').style.color = 'var(--accent)';
-}
-
-function addPipelineStageInline() {
-  state.pipelines.outbound.push('New Stage');
-  saveState();
-  _renderPipelineStageEditor();
-  // Focus the new input
-  setTimeout(() => {
-    const chips = document.querySelectorAll('#pipeline-stage-editor .pipeline-stage-chip input');
-    if (chips.length) { const last = chips[chips.length - 1]; last.select(); last.focus(); }
-  }, 50);
-}
-
-function savePipelineStages() {
-  // Flush any staged renames (inputs that haven't blurred)
-  const inputs = document.querySelectorAll('#pipeline-stage-editor .pipeline-stage-chip input');
-  inputs.forEach((inp, i) => {
-    const v = (inp.value || '').trim();
-    if (v && state.pipelines.outbound[i] !== v) _pipelineRenameStage(i, v);
-  });
-  saveState();
-  _pipelineEditMode = false;
-  renderPipeline();
-  notify('Pipeline stages saved.');
 }
 
 function pipelineDragStart(event, leadId) {
@@ -5505,10 +5811,6 @@ function openCallOverlay(leadId) {
     // Pre-populate call log fields from lead data
     const rInput = document.getElementById('co-receptionist');
     if (rInput) rInput.value = lead?.receptionistName||'';
-    const dmInput = document.getElementById('co-dm-name');
-    if (dmInput) dmInput.value = lead?.dmName||'';
-    const emailInput = document.getElementById('co-email');
-    if (emailInput) emailInput.value = lead?.email||'';
     const dmCb = document.getElementById('co-spoke-dm');
     if (dmCb) dmCb.checked = !!(lead?.pmSpoke);
     const demoCb = document.getElementById('co-demo-booked');
@@ -8333,14 +8635,12 @@ if (typeof showRebuttalWithTracking === 'function') {
       // Append follow-up if present
       if (obj.followUpQuestion) appendTranscript('agent', '[Follow-up] ' + obj.followUpQuestion);
       // Lock rebuttal
-      const _rwc = rebuttalText.split(/\s+/).length;
-      const lockMs = Math.max(20000, _rwc * 500); // min 20s; ~500ms/word (~120wpm reading pace)
+      const lockMs = Math.max(4000, Math.min(8000, rebuttalText.split(/\s+/).length * 280));
       rebuttalLocked = true;
       lockedObjectionId = objId;
       lockedObjectionScore = scoreAllObjections(rebuttalText)[0]?.score || 0;
       lockExpiresAt = Date.now() + lockMs;
-      clearTimeout(window._rebuttalLockTimer);
-      window._rebuttalLockTimer = setTimeout(() => { rebuttalLocked = false; }, lockMs);
+      setTimeout(() => { rebuttalLocked = false; }, lockMs);
     }
   };
 } else if (typeof showRebuttal === 'function') {
@@ -8351,11 +8651,9 @@ if (typeof showRebuttalWithTracking === 'function') {
     if (obj) {
       appendTranscript('agent', obj.rebuttal || '');
       if (obj.followUpQuestion) appendTranscript('agent', '[Follow-up] ' + obj.followUpQuestion);
-      const _fwc = (obj.rebuttal||'').split(/\s+/).length;
-      const lockMs = Math.max(20000, _fwc * 500);
+      const lockMs = Math.max(4000, Math.min(8000, (obj.rebuttal||'').split(/\s+/).length * 280));
       rebuttalLocked = true; lockedObjectionId = objId; lockExpiresAt = Date.now() + lockMs;
-      clearTimeout(window._rebuttalLockTimer);
-      window._rebuttalLockTimer = setTimeout(() => { rebuttalLocked = false; }, lockMs);
+      setTimeout(() => { rebuttalLocked = false; }, lockMs);
     }
   };
 }
@@ -8487,15 +8785,11 @@ if (typeof logCallOutcome === 'function') {
         last.confidence = lockedObjectionScore || null;
         // Also save extended fields from overlay inputs
         const receptionistNameEl = document.getElementById('co-receptionist');
-        const dmNameEl = document.getElementById('co-dm-name');
-        const emailEl = document.getElementById('co-email');
         const spokeDMEl = document.getElementById('co-spoke-dm');
         const demoBookedEl = document.getElementById('co-demo-booked');
         const followupCbEl = document.getElementById('co-followup-cb');
         const followupDtEl = document.getElementById('co-followup-dt');
         if (receptionistNameEl) last.receptionistName = receptionistNameEl.value.trim() || null;
-        if (dmNameEl) last.dmName = dmNameEl.value.trim() || null;
-        if (emailEl) last.email = emailEl.value.trim() || null;
         if (spokeDMEl) last.decisionMakerSpokenTo = spokeDMEl.checked;
         if (demoBookedEl) last.demoBooked = demoBookedEl.checked || (outcome === 'Demo Booked');
         if (followupCbEl) last.followupRequired = followupCbEl.checked;
@@ -8505,7 +8799,6 @@ if (typeof logCallOutcome === 'function') {
           last.followupTime = dt.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
         }
         last.sessionId = sessionStartData ? (sessionStartData.id || null) : null;
-        last.outcome = outcome;
         saveState();
       }
     } catch(e) { console.error('Persona logging error', e); }
@@ -10205,7 +10498,7 @@ setTimeout(hookEmailParser, 2500);
 // 9. SPEAKER-AWARE OBJECTION DETECTION SUPPRESSION
 // ─────────────────────────────────────────────────────────────────────────────
 (function() {
-  var THRESHOLD = 0.30; // lowered from 0.42 — catch partial reading early
+  var THRESHOLD = 0.42;
 
   function overlap(spoken, reference) {
     var refWords = new Set(reference.toLowerCase().split(/\W+/).filter(Boolean));
@@ -10261,15 +10554,6 @@ setTimeout(hookEmailParser, 2500);
       window.detectOverlayObjection = function(text, isFinal) {
         if (isAgentReading(text)) {
           setBadge('reading');
-          // Refresh the rebuttal lock so it doesn't expire while agent is mid-sentence
-          if (typeof lockExpiresAt !== 'undefined' && typeof rebuttalLocked !== 'undefined') {
-            var rebuttalWords = getRebuttalText().split(/\s+/).length;
-            var refreshMs = Math.max(15000, rebuttalWords * 500);
-            rebuttalLocked = true;
-            lockExpiresAt = Date.now() + refreshMs;
-            clearTimeout(window._rebuttalLockTimer);
-            window._rebuttalLockTimer = setTimeout(function() { rebuttalLocked = false; }, refreshMs);
-          }
           return; // suppress
         }
         setBadge('detecting');
